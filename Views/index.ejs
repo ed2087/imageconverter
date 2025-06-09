@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <%- include('partials/header') %>
+        
+        <main class="main-container">
+            <%- include('partials/upload-zone') %>
+            
+            <div id="image-grid" class="image-grid hidden"></div>
+            
+            <%- include('partials/settings-panel') %>
+            
+            <div id="processing-dashboard" class="processing-dashboard hidden">
+                <div class="progress-overview">
+                    <div class="progress-ring">
+                        <svg class="progress-circle" width="120" height="120">
+                            <circle cx="60" cy="60" r="54" fill="none" stroke="#374151" stroke-width="8"/>
+                            <circle id="progress-bar" cx="60" cy="60" r="54" fill="none" stroke="#0ea5e9" 
+                                    stroke-width="8" stroke-linecap="round" 
+                                    stroke-dasharray="339.292" stroke-dashoffset="339.292"/>
+                        </svg>
+                        <div class="progress-text">
+                            <span id="progress-percentage">0%</span>
+                            <span class="progress-label">Processing</span>
+                        </div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="stat">
+                            <span class="stat-label">Images</span>
+                            <span id="processed-count">0 / 0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Speed</span>
+                            <span id="processing-speed">0 img/s</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">ETA</span>
+                            <span id="time-remaining">--:--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="download-center" class="download-center hidden">
+                <div class="download-summary">
+                    <h3>Processing Complete!</h3>
+                    <p><span id="success-count">0</span> images processed successfully</p>
+                    <button id="download-zip" class="btn btn-primary btn-large">
+                        <svg class="icon">
+                            <use href="#icon-download"></use>
+                        </svg>
+                        Download ZIP
+                    </button>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Toast notifications -->
+        <div id="toast-container" class="toast-container"></div>
+        
+        <!-- Loading overlay -->
+        <div id="loading-overlay" class="loading-overlay hidden">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Testing settings functionality...');
+    
+    // Manual test
+    const settingsBtn = document.getElementById('settings-toggle');
+    const settingsPanel = document.getElementById('settings-panel');
+    
+    if (settingsBtn && settingsPanel) {
+        settingsBtn.addEventListener('click', function() {
+            console.log('Manual settings click handler');
+
+            const isHidden = settingsPanel.classList.contains('hidden');
+
+            if (isHidden) {
+                settingsPanel.classList.remove('hidden');
+                settingsPanel.classList.add('open');
+            } else {
+                settingsPanel.classList.remove('open');
+                settingsPanel.classList.add('hidden');
+            }
+        });
+
+        console.log('✅ Manual settings handler added');
+    } else {
+        console.log('❌ Settings elements not found:', {
+            button: !!settingsBtn,
+            panel: !!settingsPanel
+        });
+    }
+});
+</script>
+    
+    <%- include('partials/scripts') %>
+</body>
+</html>

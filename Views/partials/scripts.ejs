@@ -1,0 +1,92 @@
+<!-- Core JavaScript -->
+<script src="/js/app.js"></script>
+
+<!-- SVG Icons -->
+<svg style="display: none;">
+    <defs>
+        <symbol id="icon-upload" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7,10 12,15 17,10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </symbol>
+        
+        <symbol id="icon-download" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7,10 12,15 17,10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+        </symbol>
+        
+        <symbol id="icon-settings" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </symbol>
+        
+        <symbol id="icon-camera" viewBox="0 0 24 24">
+            <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2v11z"/>
+            <circle cx="12" cy="13" r="4"/>
+        </symbol>
+        
+        <symbol id="icon-trash" viewBox="0 0 24 24">
+            <polyline points="3,6 5,6 21,6"/>
+            <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+            <line x1="10" y1="11" x2="10" y2="17"/>
+            <line x1="14" y1="11" x2="14" y2="17"/>
+        </symbol>
+        
+        <symbol id="icon-close" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </symbol>
+    </defs>
+</svg>
+
+<!-- Fixed Performance monitoring -->
+<script>
+// Fixed performance tracking
+window.addEventListener('load', () => {
+    // Use Performance API if available
+    if (window.performance && window.performance.timing) {
+        const perfData = window.performance.timing;
+        const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+        
+        // Only log if we have valid timing data
+        if (loadTime > 0 && loadTime < 60000) { // Less than 60 seconds
+            console.log(`Page load time: ${loadTime}ms`);
+        }
+    }
+    
+    // Alternative method using Performance Observer
+    if (window.PerformanceObserver) {
+        const observer = new PerformanceObserver((list) => {
+            for (const entry of list.getEntries()) {
+                if (entry.entryType === 'navigation') {
+                    console.log(`Navigation timing: ${entry.duration.toFixed(2)}ms`);
+                }
+            }
+        });
+        observer.observe({ entryTypes: ['navigation'] });
+    }
+});
+
+// Debug logging for settings
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, checking for app initialization...');
+    
+    // Check if app is initialized
+    setTimeout(() => {
+        if (window.app) {
+            console.log('✅ App initialized successfully');
+            console.log('Settings:', window.app.settings);
+        } else {
+            console.error('❌ App not initialized');
+        }
+        
+        if (window.jobManager) {
+            console.log('✅ Job manager initialized');
+        } else {
+            console.error('❌ Job manager not initialized');
+        }
+    }, 100);
+});
+</script>
+</head>

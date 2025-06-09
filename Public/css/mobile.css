@@ -1,0 +1,175 @@
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    /* Settings panel full screen on mobile */
+    .settings-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    /* Image grid responsive */
+    .image-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: var(--spacing-sm);
+    }
+    
+    .image-card {
+        font-size: var(--font-size-sm);
+    }
+    
+    .image-preview {
+        height: 120px;
+    }
+    
+    /* Progress dashboard mobile layout */
+    .progress-overview {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .progress-details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+    
+    /* Format grid single column on small screens */
+    @media (max-width: 480px) {
+        .format-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .resize-presets {
+            grid-template-columns: 1fr;
+        }
+        
+        .position-grid {
+            margin: 0 auto;
+        }
+        
+        /* Toast notifications full width */
+        .toast-container {
+            left: var(--spacing-sm);
+            right: var(--spacing-sm);
+        }
+        
+        .toast {
+            min-width: auto;
+        }
+        
+        /* Dimension inputs stack on very small screens */
+        .dimension-inputs {
+            flex-direction: column;
+        }
+        
+        .aspect-lock-btn {
+            order: -1;
+            align-self: center;
+            transform: rotate(90deg);
+        }
+    }
+}
+
+/* Touch improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .btn {
+        min-height: 48px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .btn-small {
+        min-height: 40px;
+    }
+    
+    .format-btn, .preset-btn {
+        min-height: 56px;
+    }
+    
+    .position-btn {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .upload-zone:hover,
+    .btn:hover,
+    .format-btn:hover,
+    .preset-btn:hover {
+        transform: none;
+    }
+    
+    /* Better touch feedback */
+    .btn:active,
+    .format-btn:active,
+    .preset-btn:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Landscape phone optimizations */
+@media (max-width: 896px) and (orientation: landscape) {
+    .settings-content {
+        padding: var(--spacing-md);
+    }
+    
+    .settings-section {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .progress-overview {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    
+    .progress-ring {
+        transform: scale(0.8);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .image-preview {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .upload-zone.drag-over {
+        transform: none;
+    }
+}
+
+/* Dark mode support for system preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Print styles */
+@media print {
+    .settings-panel,
+    .upload-zone,
+    .processing-dashboard,
+    .toast-container {
+        display: none !important;
+    }
+    
+    .image-grid {
+        display: block !important;
+    }
+    
+    .image-card {
+        break-inside: avoid;
+        margin-bottom: var(--spacing-md);
+    }
+}
