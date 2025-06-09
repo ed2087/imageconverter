@@ -17,10 +17,10 @@ const fs = require('fs');
 // }
 
 // Import routes
-const uploadRoutes = require('./Routes/upload');      // Capital R
-const processRoutes = require('./Routes/process');    // Capital R  
-const downloadRoutes = require('./Routes/download');  // Capital R
-const errorHandler = require('./Middleware/errorHandler'); // Capital M
+const uploadRoutes = require('./routes/upload');      // Capital R
+const processRoutes = require('./routes/process');    // Capital R  
+const downloadRoutes = require('./routes/download');  // Capital R
+const errorHandler = require('./middleware/errorHandler'); // Capital M
 
 // Also fix this line:
 //const HerokuConfig = require('./config/heroku');      // Capital C
