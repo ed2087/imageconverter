@@ -2,7 +2,7 @@
   "name": "image-converter",
   "version": "1.0.0",
   "description": "Modern web-based batch image converter",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
@@ -17,7 +17,8 @@
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
+    "express": "^4.21.2",
     "archiver": "^7.0.1",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
@@ -25,14 +26,13 @@
     "express-rate-limit": "^7.5.0",
     "helmet": "^8.1.0",
     "multer": "^2.0.1",
-    "nodemon": "^3.1.10",
     "sharp": "^0.34.2",
     "uuid": "^11.1.0"
   },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
   "engines": {
     "node": ">=18.0.0"
-  },
-  "dependencies": {
-    "express": "^4.21.2"
   }
 }
