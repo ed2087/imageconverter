@@ -7,14 +7,14 @@ const rateLimit = require('express-rate-limit');
 const fs = require('fs');
 
 // Heroku optimizations
-if (process.env.NODE_ENV === 'production') {
-    try {
-        const HerokuConfig = require('./config/heroku');
-        HerokuConfig.initialize();
-    } catch (error) {
-        console.warn('Heroku config not found, using default settings');
-    }
-}
+// if (process.env.NODE_ENV === 'production') {
+//     try {
+//         const HerokuConfig = require('./config/heroku');
+//         HerokuConfig.initialize();
+//     } catch (error) {
+//         console.warn('Heroku config not found, using default settings');
+//     }
+// }
 
 // Import routes
 const uploadRoutes = require('./Routes/upload');      // Capital R
@@ -23,7 +23,7 @@ const downloadRoutes = require('./Routes/download');  // Capital R
 const errorHandler = require('./Middleware/errorHandler'); // Capital M
 
 // Also fix this line:
-const HerokuConfig = require('./config/heroku');      // Capital C
+//const HerokuConfig = require('./config/heroku');      // Capital C
 
 const app = express();
 const PORT = process.env.PORT || 3000;

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "heroku-postbuild": "npm rebuild sharp"
+    "heroku-postbuild": "npm rebuild sharp --platform=linux --arch=x64"
   },
   "keywords": [
     "image",
