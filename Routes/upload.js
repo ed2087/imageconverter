@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../Config/multer');
+const upload = require('../config/multer');
 const { validateFiles, validateSettings } = require('../Middleware/fileValidation');
 const uploadController = require('../Controllers/uploadController');
 

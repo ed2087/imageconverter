@@ -77,7 +77,7 @@
 const express = require('express');
 const router = express.Router();
 const rateLimit = require('express-rate-limit');
-const upload = require('../Config/multer');
+const upload = require('../config/multer');
 const { validateFiles, validateSettings } = require('../Middleware/fileValidation');
 const processController = require('../Controllers/processController');
 
